@@ -77,7 +77,7 @@ const Project = ({ heading, username, length, specfic }) => {
     {
       title : "BookMyShowProject",
       description:"bookmyshow.com is an all in one show ticket booking site, Where you can search for shows, movies, comedies in any city across India",
-      project_url:"anishtiwari09.github.io/bookmyshowclones/html/home.html",
+      project_url:"https://anishtiwari09.github.io/bookmyshowclones/HTML/Home.html",
       repo_url:"https://github.com/jchy/BookMyShowProject",
       image:require('../../assets/img/bookmyshow.jpeg'),
       gitLogo:require('../../assets/img/gitLogo.png'),
