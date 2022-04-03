@@ -41,15 +41,15 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
                 className="border border-secondary rounded-circle"
                 src={profilePicUrl}
                 alt="profilepicture"
-                width={imgSize}
-                height={imgSize}
+                width={imgSize+10}
+                height={imgSize+10}
               />
             )}
           </div>
 
           <div className={`col-lg-${showPic ? "7" : "12"}`}>
             <h2 className="display-4 mb-5 text-center">{heading}</h2>
-            <p className="lead text-center">{message}</p>
+            <p className="lead text-left">{message}</p>
             {resume && (
               <p className="lead text-center">
                 <a

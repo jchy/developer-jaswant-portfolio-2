@@ -14,6 +14,7 @@ const dummyProject = {
   pushed_at: null,
 };
 const API = "https://api.github.com";
+// const API = "https://api.github.com/graphql";
 // const gitHubQuery = "/repos?sort=updated&direction=desc";
 // const specficQuerry = "https://api.github.com/repos/hashirshoaeb/";
 
@@ -24,7 +25,7 @@ const Project = ({ heading, username, length, specfic }) => {
     dummyProject
   );
 
-  const [projectsArray, setProjectsArray] = useState([]);
+  var [projectsArray, setProjectsArray] = useState([]);
 
   const fetchRepos = useCallback(async () => {
     let repoList = [];
@@ -33,6 +34,7 @@ const Project = ({ heading, username, length, specfic }) => {
       const response = await axios.get(allReposAPI);
       // slicing to the length
       repoList = [...response.data.slice(0, length)];
+      console.log(repoList);
       // adding specified repos
       try {
         for (let repoName of specfic) {
@@ -53,12 +55,40 @@ const Project = ({ heading, username, length, specfic }) => {
   useEffect(() => {
     fetchRepos();
   }, [fetchRepos]);
-
+  projectsArray = [
+    {
+      title : "teachable.com Clone",
+      description:"This is a team project of three members, creating a web app which have same facilities and features as of https://teachable.com.",
+      project_url:"https://teachableproject.netlify.app/",
+      repo_url:"https://github.com/jchy/teachable.com-project",
+      image:require('../../assets/img/teachable.jpeg'),
+      gitLogo:require('../../assets/img/gitLogo.png'),
+      linkLogo:require('../../assets/img/linkLogo.png')
+    },
+    {
+      title : "OYO Clone",
+      description:"OYO Rooms, also known as OYO Hotels & Homes, is an Indian multinational OTA, homes and living spaces.",
+      project_url:"https://zealous-shirley-afc987.netlify.app/",
+      repo_url:"https://github.com/jchy/OYO-Clone",
+      image:require('../../assets/img/oyo.jpeg'),
+      gitLogo:require('../../assets/img/gitLogo.png'),
+      linkLogo:require('../../assets/img/linkLogo.png')
+    },
+    {
+      title : "BookMyShowProject",
+      description:"bookmyshow.com is an all in one show ticket booking site, Where you can search for shows, movies, comedies in any city across India",
+      project_url:"anishtiwari09.github.io/bookmyshowclones/html/home.html",
+      repo_url:"https://github.com/jchy/BookMyShowProject",
+      image:require('../../assets/img/bookmyshow.jpeg'),
+      gitLogo:require('../../assets/img/gitLogo.png'),
+      linkLogo:require('../../assets/img/linkLogo.png')
+    },
+  ];
   return (
     <Jumbotron fluid id="projects" className="bg-light m-0">
-      <Container className="">
+      <Container className="col-sm-12 col-md-12 col-lg-12">
         <h2 className="display-4 pb-5 text-center">{heading}</h2>
-        <Row>
+        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:"center", gap:"2rem"}}>
           {projectsArray.length
             ? projectsArray.map((project, index) => (
                 <ProjectCard
@@ -74,7 +104,7 @@ const Project = ({ heading, username, length, specfic }) => {
                   value={project}
                 />
               ))}
-        </Row>
+        </div>
       </Container>
     </Jumbotron>
   );
